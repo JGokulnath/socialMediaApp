@@ -5,7 +5,7 @@ import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDv0e6MeBQlix4OzAyS50ZaICvrNtl39UE",
-  authDomain: "https://vibesnap-gokulnath.netlify.app/signin",
+  authDomain: "socialmedia-7890e.firebaseapp.com",
   projectId: "socialmedia-7890e",
   storageBucket: "socialmedia-7890e.firebasestorage.app",
   messagingSenderId: "786115539689",
