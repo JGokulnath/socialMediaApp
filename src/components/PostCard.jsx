@@ -78,8 +78,8 @@ const PostCard = ({ post, index, onLike, userId }) => {
             {post.like_count || 0} Likes
           </Typography>
         </Box>
-        <IconButton onClick={() => setIsShareOpen(true)} sx={{backgroundColor:"#00000012",padding:"10px",borderRadius:"25px"}}>
-          <Share /> <Typography variant="h6">Share</Typography>
+        <IconButton onClick={() => setIsShareOpen(true)} sx={{backgroundColor:"#00000012",padding:"10px",borderRadius:"25px",width:"max-content"}}>
+          <Share /> <Typography variant="body2">Share</Typography>
         </IconButton>
       </Box>
       {isShareOpen && (

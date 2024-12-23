@@ -65,8 +65,8 @@ const ShareCard = ({ open, handleClose }) => {
     >
       <Card
         sx={{
-          p: 3,
-          width: '300px',
+          p: 1,
+          width: '330px',
           backgroundColor: 'rgba(255, 255, 255,1)',
           borderRadius: 3,
         }}
