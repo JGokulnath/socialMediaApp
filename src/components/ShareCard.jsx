@@ -10,7 +10,6 @@ import Backdrop from '@mui/material/Backdrop';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import RedditIcon from '@mui/icons-material/Reddit';
-import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
@@ -48,13 +47,12 @@ const ShareCard = ({ open, handleClose }) => {
         return;
     }
     window.open(shareURL, '_blank');
-    console.log(`Shared via ${platform}: ${currentPageLink}`);
   };
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(currentPageLink);
     alert('Page link copied to clipboard!');
-    console.log(`Link copied: ${currentPageLink}`);
+  
   };
 
   return (

@@ -19,13 +19,13 @@ function App() {
       <Router>
         <Routes>
           <Route 
-            path="/" 
-            element={isLoggedIn() ? <FeedPage /> : <Navigate to="/signin" />} 
+            path="/feed" 
+            element={isLoggedIn() ? <FeedPage /> : <Navigate to="/" />} 
           />
-          <Route path='/feed' element={isLoggedIn() ? <FeedPage /> : <Navigate to="/signin" />} />
-          <Route path="/profile" element={isLoggedIn() ? <UserProfile /> : <Navigate to="/signin" />} />
-          <Route path="/newPost" element={isLoggedIn() ? <NewPost /> : <Navigate to="/signin" />} />
-          <Route path="/signin" element={<SignIn />} />
+          <Route path='/feed' element={isLoggedIn() ? <FeedPage /> : <Navigate to="/" />} />
+          <Route path="/profile" element={isLoggedIn() ? <UserProfile /> : <Navigate to="/" />} />
+          <Route path="/newPost" element={isLoggedIn() ? <NewPost /> : <Navigate to="/" />} />
+          <Route path="/" element={<SignIn />} />
         </Routes>
       </Router>
     </UserProvider>

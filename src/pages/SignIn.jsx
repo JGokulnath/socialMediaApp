@@ -18,7 +18,7 @@ const SignIn = () => {
              
             handleSignIn(user.uid);
             localStorage.setItem("isLoggedIn",true);
-            navigate("/");
+            navigate("/feed");
         } catch (error) {
             console.error('Google sign-in Error:', error.message);
         }

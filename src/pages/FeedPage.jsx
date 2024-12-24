@@ -141,7 +141,6 @@ const FeedPage = () => {
     fetchPosts();
   }, []);
 
-  console.log(posts);
   
 
   return (
