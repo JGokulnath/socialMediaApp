@@ -57,7 +57,7 @@ const ShareCard = ({ open, handleClose }) => {
 
   return (
     <Backdrop
-      sx={{ color: '#fff',backdropFilter: 'blur(10px)', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      sx={{ color: '#fff',backdropFilter: 'blur(10px)', zIndex: (theme) => theme.zIndex.drawer + 1,display:"flex",justifyContent:"center",alignItems:"center"  }}
       open={open}
       onClick={handleClose}
     >
@@ -145,12 +145,11 @@ const ShareCard = ({ open, handleClose }) => {
             </clipPath>
             </defs>
                 </svg>
-
               </IconButton>
             </Tooltip>
           </Box>
 
-          <Box bgcolor="#ccc" p={1} textAlign="center" display="flex" alignItems="center" justifyContent="space-between">
+          <Box bgcolor="#ccc" p={1} textAlign="left" display="flex" alignItems="center" justifyContent="space-evenly">
             <Typography variant="body2">Link:</Typography>
             <Typography variant="body2" noWrap>
               {currentPageLink}

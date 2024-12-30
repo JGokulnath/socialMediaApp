@@ -1,26 +1,33 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography, Snackbar, Alert } from '@mui/material';
 import { auth } from '../services/firebaseConfig';
 import { createUser } from '../services/createUser';
 import { UserContext } from '../services/UserContext';
 
 const SignIn = () => {
     const navigate = useNavigate();
-    const {handleSignIn } = useContext(UserContext);
+    const { handleSignIn } = useContext(UserContext);
+    const [message, setMessage] = useState(null); // State for the message
+
     const handleGoogleSignIn = async () => {
         const provider = new GoogleAuthProvider();
         try {
             const result = await signInWithPopup(auth, provider);
             const user = result.user;
             await createUser(user);
-             
+
             handleSignIn(user.uid);
-            localStorage.setItem("isLoggedIn",true);
-            navigate("/feed");
+            localStorage.setItem('isLoggedIn', true);
+
+            setMessage({ text: 'Sign in successfully!', type: 'success' }); // Show success message
+            setTimeout(() => setMessage(null), 2000); // Hide message after 2 seconds
+            navigate('/feed');
         } catch (error) {
             console.error('Google sign-in Error:', error.message);
+            setMessage({ text: 'Failed to sign in. Try again!', type: 'error' }); // Show error message
+            setTimeout(() => setMessage(null), 2000); // Hide message after 2 seconds
         }
     };
 
@@ -40,10 +47,10 @@ const SignIn = () => {
         >
             <Box
                 style={{
-                    width: '100%', 
+                    width: '100%',
                     backgroundColor: 'white',
                     borderRadius: '30px 30px 0 0',
-                    paddingBottom:"4rem",
+                    paddingBottom: '4rem',
                     boxShadow: '0px -2px 10px rgba(0, 0, 0, 0.1)',
                     textAlign: 'center',
                     overflow: 'hidden',
@@ -69,8 +76,8 @@ const SignIn = () => {
                         color: '#fff',
                         width: '60%',
                         mb: 2,
-                        textTransform:"none",
-                        borderRadius:"25px",
+                        textTransform: 'none',
+                        borderRadius: '25px',
                         '&:hover': {
                             backgroundColor: '#333',
                         },
@@ -80,7 +87,7 @@ const SignIn = () => {
                             src="/assets/Google.svg"
                             alt="Google Icon"
                             style={{
-                                border:"none",
+                                border: 'none',
                                 width: '20px',
                                 height: '20px',
                             }}
@@ -91,6 +98,23 @@ const SignIn = () => {
                     Sign in with Google
                 </Button>
             </Box>
+
+            {message && (
+                <Snackbar
+                    open={!!message}
+                    autoHideDuration={2000}
+                    onClose={() => setMessage(null)}
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+                >
+                    <Alert
+                        onClose={() => setMessage(null)}
+                        severity={message.type}
+                        sx={{ width: '100%' }}
+                    >
+                        {message.text}
+                    </Alert>
+                </Snackbar>
+            )}
         </div>
     );
 };

@@ -66,7 +66,7 @@ const UploadOptions = ({ onFileChange, onVideoChange, onCaptionChange, caption }
           <input
             id="camera-input"
             type="file"
-            accept="image/*"
+            accept="image/jpeg, image/png, image/jpg"
             capture="environment"
             style={{ display: "none" }}
             onChange={(e) => onFileChange(e.target.files)}
